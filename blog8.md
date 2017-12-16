@@ -56,11 +56,11 @@ classic/
 
 Это очень важный момент который вы должны понимать. Т.к. теперь для изменения каких-то элементов на странице — надо редактировать файлы темы, а не файлы из папки protected/views/
 
-![blog](/images/blog8/6c438ca64c61662ce3258bdfc3d7e761.jpg)
-
 ## Как это всё работает?
 
-Yii Framework Blog img http://dbhelp.rucat3 Теперь давайте разберем зачем нам всё таки папка protected/views? Очень просто. Она является неким запасным вариантом. Давайте представим что у нас на сайте используется десять разных тем, и в каждой из тем есть одинаковая форма регистрации. Эта форма регистрации к примеру находиться в файле user/registration.php и полностью аналогичная для каждой из тем. Так вот что бы не пришлось дублировать этот файл десять раз для каждой из тем — мы можем просто поместить его в protected/views/user/registation.php. Если в приложении произойдет попытка загрузить отображение которого НЕТУ в папке текущей темы — оно автоматически загрузиться с protected/views/. Очень важно что бы вы это поняли, потому что дальше это поможет уменьшить дублирование кода.
+![blog](/images/blog8/6c438ca64c61662ce3258bdfc3d7e761.jpg)
+
+Теперь давайте разберем зачем нам всё таки папка protected/views? Очень просто. Она является неким запасным вариантом. Давайте представим что у нас на сайте используется десять разных тем, и в каждой из тем есть одинаковая форма регистрации. Эта форма регистрации к примеру находиться в файле user/registration.php и полностью аналогичная для каждой из тем. Так вот что бы не пришлось дублировать этот файл десять раз для каждой из тем — мы можем просто поместить его в protected/views/user/registation.php. Если в приложении произойдет попытка загрузить отображение которого НЕТУ в папке текущей темы — оно автоматически загрузиться с protected/views/. Очень важно что бы вы это поняли, потому что дальше это поможет уменьшить дублирование кода.
 
 ## Качаем
 
@@ -255,7 +255,7 @@ Description: A two-column fixed-width template suitable for small websites.
 
 Файл main.php после некоторых изменений должен выглядеть вот так:
 
-```php+HTML
+```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
 Design by Free CSS Templates
@@ -427,7 +427,7 @@ Description: A two-column fixed-width template suitable for small websites.
 
 Смотрим что у меня получилось теперь из файла main.php:
 
-```php+HTML
+```HTML
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
 Design by Free CSS Templates
@@ -507,7 +507,7 @@ Description: A two-column fixed-width template suitable for small websites.
 Хочу вас порадовать — это последний вариант файла main.php :) Теперь если вы зайдете на localhost — увидите что наши посты теперь выводятся в нужном месте. Вот только в дизайн они немного плохо вписываются.
 
 За вывод постов отвечают файлы index.php и _list.php. Как вы помните вывод постов у нас идет в табличном виде. А в дизайне который мы подключаем вывод сделан следующим образом:
-```php+HTML
+```html
 <div class="post">
 <h2 class="title"><a href="#">тема</a></h2>
 <p class="byline">правый текст</p>
@@ -538,7 +538,7 @@ foreach ($posts as $key => $val) {
     )); ?>
 ```
 А файл _list.php:
-```php+HTML
+```html
 <div class="post">
 <h2 class="title"><a href="<?=$this->createUrl('post/view/', array('url' => $post->url));?>"><?=$post->name;?></a></h2>
 <p class="byline"><?php echo $post->created;?></p>
