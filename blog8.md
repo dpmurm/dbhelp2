@@ -17,7 +17,7 @@ test/
 ```
 В папке views должны находиться переделанные под конкретную тему файлы представлений.
 
-![blog](/images/blog8\801db9e4010fcdf4058a8597e0afdc57.jpg)
+![blog](/images/blog8/801db9e4010fcdf4058a8597e0afdc57.jpg)
 
 ## Теория
 
