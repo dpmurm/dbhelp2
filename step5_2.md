@@ -9,7 +9,8 @@
 
 Первым делом я открыл phpMyAdmin (обычно этот скрипт для удобной работы с базой уже установлен у вас на хостинге) и создал таблицу для новостей следующим SQL:
 
- CREATE TABLE `news` (
+```sql
+CREATE TABLE `news` (
 `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `url` VARCHAR( 100 ) NULL ,
 `title` VARCHAR( 255 ) NOT NULL ,
@@ -17,34 +18,36 @@
 ) ENGINE = MYISAM
 
 ALTER TABLE `news` ADD UNIQUE(`url`)
-
-
-
+```
 Я делал только основные поля что бы вы поняли как это работает. После этого я заполняю базу двумя новостями:
 
+```sql
 INSERT  INTO `news` (`id`, `url`, `title`, `body`) VALUES (NULL,  'my-super-news1', 'Тестовая новость 1', 'текст новости 1 текст новости 1  текст новости 1 текст новости 1 текст новости 1 текст новости 1 '),  (NULL, 'super-puper-news2', 'Тестовая новость 2', 'текст новости 2 текст  новости 2 ');
+```
 
 
 
 Идея в следующем: пользователь который заходит по ссылке www.mysite.ru/news/my-super-news/ - получает на экране текст первой новости, а если зайдет на www.mysite.ru/news/super-puper-news2 тогда получает текст второй.
 
 Создаем модель (models/News.php) для работы с нашей таблицей новостей:
-
+```php
 <?php
 class News extends CActiveRecord
 {
-    public static function model($className=__CLASS__)
-    {
-        return parent::model($className);
-    }
-    public function tableName()
-    {
-        return 'news';
-    }
+
+public static function model($className=__CLASS__)
+{
+    return parent::model($className);
+}
+public function tableName()
+{
+    return 'news';
 }
 
+}
+```
 Модернизируем наш контроллер под работу с базой (controllers/HelloController.php)
-
+```php
 <?php
 class HelloController extends CController
 {
@@ -80,7 +83,7 @@ class HelloController extends CController
       }
    }
 }
-
+```
 Вот и все. Заходите по тестовым ссылкам выше и наслаждайтесь работой.
 Если даже после примера остались вопросы - рекомендую перечитать урок по работе с моделью.
 
